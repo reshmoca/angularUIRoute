@@ -1,0 +1,15 @@
+<div>
+	{{ selectedRows | json }}
+</div>
+<br />
+<button type="button" class="btn btn-success" ng-click="gridApi.pagination.previousPage()">
+	previous page
+</button>
+<button type="button" class="btn btn-success" ng-click="gridApi.pagination.nextPage()">
+	next page
+</button>
+<button type="button" class="btn btn-success" ng-click="gridApi.pagination.seek(2)">
+	go to page 2
+</button>
+<div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-selection ui-grid-pagination class="grid"></div>
+

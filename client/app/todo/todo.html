@@ -1,0 +1,60 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+	<h1>Todoアプリ</h1>
+  </div>
+</header>
+
+<div class="container todo-contents" ng-controller="TodoCtrl">
+	<form class="input-group input-group-lg" ng-controller="RegisterController" ng-submit="addTodo()">
+	  <input type="text" required placeholder="新しい要件を入力" class="form-control input-lg" ng-model="newTitle">
+	  <span class="input-group-btn">
+		<button class="btn btn-default" type="submit">追加</button>
+	  </span>
+	</form>
+
+	<hr>
+
+	<div class="btn-toolbar" ng-controller="ToolbarController">
+		<div class="btn-group">
+			<button class="btn btn-success" ng-click="checkAll()">全て完了/未了</button>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-default" ng-class="{active: !currentFilter}" ng-click="changeFilter()">
+					全部
+					<span class="badge">{{ allCount }}</span>
+			</button>
+			<button class="btn btn-default" ng-class="{active: currentFilter == filter.remaining}" ng-click="changeFilter(filter.remaining)">
+					未了
+					<span class="badge">{{ remainingCount }}</span>
+			</button>
+			<button class="btn btn-default" ng-class="{active: currentFilter == filter.done}" ng-click="changeFilter(filter.done)">
+					完了
+					<span class="badge">{{ doneCount }}</span>
+			</button>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-danger" ng-click="removeDoneTodo()">完了アイテムを全て削除</button>
+		</div>
+	</div>
+
+	<hr>
+
+	<ul class="list-unstyled" ng-controller="TodoListController">
+		<li class="todo-item" ng-repeat="todo in todoList | filter:currentFilter" ng-class="{done: todo.done, editing: todo == editing}">
+			<form class="input-group input-group-lg" name="todoForm" ng-submit="doneEdit(todoForm)">
+				<label class="input-group-addon">
+					<input type="checkbox" class="state" ng-model="todo.done">
+				</label>
+				<p class="form-control input-lg todo-title" ng-hide="todo == editing" ng-dblclick="editTodo(todo)">{{ todo.title }}</p>
+				<input type="text" required class="form-control input-lg" ng-show="todo == editing" ng-model="todo.title" my-select="todo == editing" ng-blur="doneEdit(todoForm)">
+				<span class="input-group-btn del-btn" ng-if="todo != editing">
+					<button type="reset" class="btn btn-danger" ng-click="removeTodo(todo)">削除</button>
+				</span>
+			</form>
+		</li>
+	</ul>
+</div>
+
+<div ng-include="'components/footer/footer.html'"></div>

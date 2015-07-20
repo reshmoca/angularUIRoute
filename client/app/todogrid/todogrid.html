@@ -1,0 +1,42 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+	<h1>Todoアプリ(UI Grid版)</h1>
+  </div>
+</header>
+
+<div class="container todo-contents">
+	<form class="input-group input-group-lg">
+		<input type="text" placeholder="新しい要件を入力" class="form-control input-lg" ng-model="newTitle">
+		<span class="input-group-btn">
+			<button class="btn btn-default" ng-click="addTodo()">追加</button>
+		</span>
+		<span class="input-group-btn">
+			<button class="btn btn-default" ng-click="getTodo()">サーバーから取得</button>
+		</span>
+		<span class="input-group-btn">
+			<button class="btn btn-default" ng-click="showSelectedRows()">選択されている行の情報表示</button>
+		</span>
+		<span class="input-group-btn">
+			<button class="btn btn-default" ng-click="showGetSelectedRowslog()">log表示</button>
+		</span>
+	</form>
+	<br />
+	<div>
+		{{ selectedRows | json }}
+	</div>
+	<br />
+	<button type="button" class="btn btn-success" ng-click="gridApi.pagination.previousPage()">
+		previous page
+	</button>
+	<button type="button" class="btn btn-success" ng-click="gridApi.pagination.nextPage()">
+		next page
+	</button>
+	<button type="button" class="btn btn-success" ng-click="gridApi.pagination.seek(2)">
+		go to page 2
+	</button>
+	<div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-selection ui-grid-pagination class="grid"></div>
+</div>
+
+<div ng-include="'components/footer/footer.html'"></div>

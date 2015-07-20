@@ -1,0 +1,36 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+	<h1>Todoアプリ(UI Grid版 && ui-view)</h1>
+  </div>
+</header>
+
+<div class="container todo-contents">
+	<form class="input-group input-group-lg">
+		<input type="text" placeholder="新しい要件を入力" class="form-control input-lg" ng-model="newTitle">
+		<div>
+			<span class="input-group-btn">
+				<button class="btn btn-default" ng-click="addTodo()" ui-sref='.viewgrid'>追加</button>
+			</span>
+			<span class="input-group-btn">
+				<button class="btn btn-default" ng-click="getTodo()" ui-sref='.viewgrid'>サーバーから取得</button>
+			</span>
+			<span class="input-group-btn">
+				<button class="btn btn-default" ng-click="showSelectedRows()" ui-sref='.viewgrid'>選択されている行の情報表示</button>
+			</span>
+			<span class="input-group-btn">
+				<button class="btn btn-default" ng-click="showGetSelectedRowslog()">log表示</button>
+			</span>
+		</div>
+		<div>
+			<span>gridの1ページの表示件数：</span><input type='number' ng-model='gridNum'>
+		</div>
+	</form>
+	<br />
+	<div>
+		<div ui-view></div>
+	</div>
+</div>
+
+<div ng-include="'components/footer/footer.html'"></div>

@@ -5,6 +5,18 @@ angular.module('angularToolsUiApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },
+    {
+      'title': 'todo',
+      'link': '/todo'
+    },
+    {
+      'title': 'todogrid',
+      'link': '/todogrid'
+    },
+    {
+      'title': 'todogridview',
+      'link': '/todogridview'
     }];
 
     $scope.isCollapsed = true;

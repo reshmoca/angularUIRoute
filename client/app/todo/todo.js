@@ -3,9 +3,9 @@
 angular.module('angularToolsUiApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('test', {
-        url: '/test',
-        templateUrl: 'app/test/test.html',
-        controller: 'TestCtrl'
+      .state('todo', {
+        url: '/todo',
+        templateUrl: 'app/todo/todo.html',
+        controller: 'TodoCtrl'
       });
   });

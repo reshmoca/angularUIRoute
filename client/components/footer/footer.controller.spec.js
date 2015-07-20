@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: TestCtrl', function () {
+describe('Controller: FooterCtrl', function () {
 
   // load the controller's module
   beforeEach(module('angularToolsUiApp'));
 
-  var TestCtrl, scope;
+  var FooterCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    TestCtrl = $controller('TestCtrl', {
+    FooterCtrl = $controller('FooterCtrl', {
       $scope: scope
     });
   }));
